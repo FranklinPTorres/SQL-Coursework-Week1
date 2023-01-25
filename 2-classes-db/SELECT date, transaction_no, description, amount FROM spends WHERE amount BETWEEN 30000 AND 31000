@@ -1,0 +1,19 @@
+                                        Table "public.spends"
+     Column      |         Type          | Collation | Nullable |              Default               
+-----------------+-----------------------+-----------+----------+------------------------------------
+ id              | integer               |           | not null | nextval('spends_id_seq'::regclass)
+ expense_type_id | integer               |           |          | 
+ expense_area_id | integer               |           |          | 
+ supplier_id     | integer               |           |          | 
+ date            | date                  |           | not null | 
+ transaction_no  | integer               |           | not null | 
+ supplier_inv_no | character varying(20) |           | not null | 
+ description     | character varying(90) |           | not null | 
+ amount          | numeric               |           | not null | 
+Indexes:
+    "spends_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "spends_expense_area_id_fkey" FOREIGN KEY (expense_area_id) REFERENCES expense_areas(id)
+    "spends_expense_type_id_fkey" FOREIGN KEY (expense_type_id) REFERENCES expense_types(id)
+    "spends_supplier_id_fkey" FOREIGN KEY (supplier_id) REFERENCES suppliers(id)
+
